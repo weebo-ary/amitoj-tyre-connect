@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
@@ -14,10 +15,6 @@ const Navigation = () => {
     { label: "Contact", path: "/contact" },
   ];
 
-  const handleNavClick = (path: string) => {
-    window.location.href = path;
-    setIsMenuOpen(false);
-  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
@@ -31,12 +28,8 @@ const Navigation = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-4">
             {navItems.map((item) => (
-              <Button
-                key={item.path}
-                variant="navlink"
-                onClick={() => handleNavClick(item.path)}
-              >
-                {item.label}
+              <Button key={item.path} variant="navlink" asChild>
+                <Link to={item.path}>{item.label}</Link>
               </Button>
             ))}
           </div>
@@ -59,9 +52,10 @@ const Navigation = () => {
                 key={item.path}
                 variant="navlink"
                 className="w-full"
-                onClick={() => handleNavClick(item.path)}
+                asChild
+                onClick={() => setIsMenuOpen(false)}
               >
-                {item.label}
+                <Link to={item.path}>{item.label}</Link>
               </Button>
             ))}
           </div>
