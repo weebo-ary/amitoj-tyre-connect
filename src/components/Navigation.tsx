@@ -8,14 +8,14 @@ const Navigation = () => {
   const whatsappLink = "https://wa.me/919201457156";
 
   const navItems = [
-    { label: "Home", id: "home" },
-    { label: "About", id: "about" },
-    { label: "Products", id: "products" },
-    { label: "Contact", id: "contact" },
+    { label: "Home", path: "/" },
+    { label: "About", path: "/about" },
+    { label: "Products", path: "/products" },
+    { label: "Contact", path: "/contact" },
   ];
 
-  const handleNavClick = (id: string) => {
-    window.open(whatsappLink, "_blank");
+  const handleNavClick = (path: string) => {
+    window.location.href = path;
     setIsMenuOpen(false);
   };
 
@@ -32,11 +32,11 @@ const Navigation = () => {
           <div className="hidden md:flex items-center gap-4">
             {navItems.map((item) => (
               <Button
-                key={item.id}
+                key={item.path}
                 variant="navlink"
-                onClick={() => handleNavClick(item.id)}
+                onClick={() => handleNavClick(item.path)}
               >
-                Navlink
+                {item.label}
               </Button>
             ))}
           </div>
@@ -56,12 +56,12 @@ const Navigation = () => {
           <div className="md:hidden py-4 space-y-2 animate-fade-in">
             {navItems.map((item) => (
               <Button
-                key={item.id}
+                key={item.path}
                 variant="navlink"
                 className="w-full"
-                onClick={() => handleNavClick(item.id)}
+                onClick={() => handleNavClick(item.path)}
               >
-                Navlink
+                {item.label}
               </Button>
             ))}
           </div>

@@ -38,7 +38,7 @@ const Hero = () => {
             className="text-lg px-8 py-6"
             onClick={() => window.open(whatsappLink, "_blank")}
           >
-            Navlink
+            Contact Us on WhatsApp
           </Button>
         </div>
       </div>
